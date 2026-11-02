@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Canvas Synapse · 将课堂 slides、讲稿与知识点连接起来的本地课程工作台。">
+  <title>Canvas Synapse · 课程工作台</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='17' fill='%23e65d3b'/%3E%3Cpath d='M17 21h17v9H23v13h24M30 21h17v22H30' fill='none' stroke='%23fff' stroke-width='4' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#workspace">跳转到课件</a>
+  <header class="app-header">
+    <a class="brand" href="/" aria-label="Canvas Synapse 首页"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M6 7h13v8H10v10h16M16 7h10v18H16"/></svg></span><span>Canvas<span class="brand-light">Synapse</span><small>让每一页，连接理解。</small></span></a>
+    <div class="header-middle"><span class="header-divider"></span><span class="nav-active">课程工作台</span><span class="local-badge"><i></i>本地运行</span></div>
+    <div class="header-actions"><button id="search-button" class="search-trigger" aria-label="搜索课程内容"><span data-icon="search"></span><span>搜索讲稿、知识点…</span><kbd>⌘ K</kbd></button><button id="theme-button" class="icon-button" title="切换深浅主题" aria-label="切换深浅主题"><span data-icon="moon"></span></button><button id="settings-button" class="icon-button" title="模型与连接设置" aria-label="模型与连接设置"><span data-icon="settings"></span></button></div>
+  </header>
+  <div class="app-shell">
+    <aside class="library-panel" aria-label="课程与节次">
+      <div class="library-heading"><span class="eyebrow">YOUR LEARNING SPACE</span><div class="heading-line"><h2>我的课程</h2><span id="course-count" class="count">0</span></div></div>
+      <button id="import-button" class="import-button"><span data-icon="plus"></span>导入课堂<span data-icon="arrow-up-right"></span></button>
+      <div id="course-list" class="course-list"></div>
+      <div class="section-heading"><span>课堂回放</span><span id="lecture-count" class="muted">0 节</span></div>
+      <div id="lecture-list" class="lecture-list"><div class="sidebar-empty">导入一门课程，<br>从一节课堂开始。</div></div>
+      <div class="library-footer"><span data-icon="leaf"></span><div><strong>轻装学习</strong><span>字幕与课件优先 · 不保存视频</span></div><button id="storage-info" class="icon-button" aria-label="查看本地存储信息"><span data-icon="info"></span></button></div>
+    </aside>
+    <main id="workspace" class="workspace" tabindex="-1">
+      <div id="empty-workspace" class="empty-workspace">
+        <div class="welcome-kicker"><span class="mini-line"></span> FROM CLASSROOM TO CLARITY</div>
+        <h1>课堂的每一页，<br>都有理解的线索<span>。</span></h1>
+        <p>把 slides、老师的讲稿和知识点放在一起。<br>随时回看，随时追问，让散落的内容连接起来。</p>
+        <div class="welcome-actions"><button id="welcome-import" class="button primary"><span data-icon="plus"></span>导入第一节课堂</button><button id="demo-button" class="button ghost">体验示例课程<span data-icon="arrow-right"></span></button></div>
+        <div class="welcome-canvas" aria-hidden="true"><div class="sample-sheet"><div class="sample-topline"><span>PARTITIONING</span><span>01 / 06</span></div><h3>从连接，到划分。</h3><div class="graph-demo"><i class="node n1"></i><i class="node n2"></i><i class="node n3"></i><i class="node n4"></i><i class="node n5"></i><i class="node n6"></i><svg viewBox="0 0 280 120"><path d="M25 35 80 82 120 30 175 78 235 33M25 35 120 30M80 82 175 78M175 78 252 95M235 33 252 95"/></svg></div><div class="sample-bottom"><span>SLIDES</span><span>讲稿</span><span>知识点</span></div></div><div class="sample-note"><span class="note-dot"></span><strong>让课堂内容彼此连接</strong><span>保留来源，理解更有依据。</span></div></div>
+        <div class="welcome-footnote"><span data-icon="shield"></span>资料存放在本机；仅在你使用 AI 时发送所选内容。</div>
+      </div>
+      <div id="lecture-workspace" hidden>
+        <div class="lecture-header"><div><div id="lecture-breadcrumb" class="breadcrumb"></div><h1 id="lecture-title"></h1><div id="lecture-meta" class="lecture-meta"></div></div><div class="lecture-actions"><button id="lecture-source" class="icon-button" title="在平台打开原课堂" aria-label="在平台打开原课堂"><span data-icon="external"></span></button><button id="export-button" class="button subtle"><span data-icon="download"></span>导出</button><button id="analyze-button" class="button primary"><span data-icon="sparkles"></span>整理课堂</button></div></div>
+        <div id="job-banner" class="job-banner" hidden aria-live="polite"></div>
+        <section class="slide-section" aria-label="课堂课件">
+          <div class="slide-toolbar"><div class="slide-toolbar-title"><span class="section-dot"></span><strong>课件与课堂</strong><span id="slide-position" class="muted"></span></div><div class="slide-tools"><button id="bookmark-button" class="icon-button" aria-label="收藏当前页" title="收藏当前页"><span data-icon="bookmark"></span></button><button id="review-button" class="button tiny subtle"><span data-icon="check"></span><span>标记已学</span></button><span class="toolbar-divider"></span><button id="slide-prev" class="icon-button" aria-label="上一页" title="上一页 ←"><span data-icon="chevron-left"></span></button><button id="slide-next" class="icon-button" aria-label="下一页" title="下一页 →"><span data-icon="chevron-right"></span></button></div></div>
+          <div id="slide-viewer" class="slide-viewer"></div>
+          <div class="slide-caption"><span id="slide-title"></span><span id="slide-time"></span></div>
+          <div class="thumbnail-heading"><span>课堂页序</span><div class="segmented small" role="group" aria-label="课件筛选"><button class="selected" data-filter="all">全部</button><button data-filter="bookmarked">已收藏</button><button data-filter="unreviewed">待学习</button></div></div>
+          <div id="slide-thumbnails" class="slide-thumbnails" aria-label="选择课件页"></div>
+        </section>
+        <section class="materials-section"><div class="material-tabs" role="tablist" aria-label="当前页资料"><button id="tab-knowledge" class="selected" role="tab" aria-selected="true" aria-controls="material-content" data-tab="knowledge"><span data-icon="layers"></span>知识点</button><button id="tab-transcript" role="tab" aria-selected="false" aria-controls="material-content" data-tab="transcript"><span data-icon="align-left"></span>老师讲稿<span id="transcript-count" class="tab-count"></span></button><button id="tab-notes" role="tab" aria-selected="false" aria-controls="material-content" data-tab="notes"><span data-icon="pen"></span>我的笔记<span id="note-dot" class="unsaved-dot" hidden></span></button><div class="material-tab-end" id="material-status"></div></div><div id="material-content" class="material-content" role="tabpanel" aria-labelledby="tab-knowledge"></div></section>
+        <details id="lecture-summary" class="lecture-summary"><summary>整节课堂概要<span data-icon="chevron-down"></span></summary><div id="summary-content" class="prose"></div></details>
+        <div class="workspace-footer"><span id="coverage-label"></span><button id="delete-lecture" class="text-button danger">移除此节课堂</button></div>
+      </div>
+    </main>
+    <aside class="chat-panel" aria-label="AI 学习助手"><div class="chat-heading"><div class="assistant-avatar"><span data-icon="sparkles"></span></div><div><h2>一起想明白</h2><span id="chat-model-status">配置模型，开始有依据的对话</span></div><button id="chat-clear" class="icon-button" title="新开一轮对话" aria-label="新开一轮对话"><span data-icon="message-plus"></span></button></div><div class="chat-context"><span class="eyebrow">提问范围</span><div class="segmented" role="group" aria-label="提问范围"><button class="selected" data-scope="slide">当前页</button><button data-scope="lecture">本节课堂</button><button data-scope="course">整门课程</button></div><div id="context-label" class="context-label"><span data-icon="layers"></span>选择课堂后，关联学习资料</div></div><div id="chat-messages" class="chat-messages" aria-live="polite"></div><div class="chat-bottom"><div id="chat-error" class="inline-error" hidden role="alert"></div><form id="chat-form" class="chat-composer"><label class="sr-only" for="chat-input">向 AI 提问</label><textarea id="chat-input" rows="3" placeholder="这部分还没想明白？问问 AI…" maxlength="12000"></textarea><div class="composer-footer"><span>Enter 发送 · Shift + Enter 换行</span><button id="chat-send" type="submit" class="send-button" aria-label="发送问题"><span data-icon="arrow-up"></span></button></div></form><div class="chat-disclaimer"><span data-icon="link"></span>回答会附上资料来源，关键结论请核对原文。</div></div></aside>
+  </div>
+  <div id="toast-stack" class="toast-stack" aria-live="polite"></div>
+  <dialog id="modal" class="modal"><div class="modal-card"><div id="modal-content"></div></div></dialog>
+</body>
+</html>

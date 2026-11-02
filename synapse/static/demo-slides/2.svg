@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Cutsize：跨分区的连接代价">
+<rect width="1200" height="675" fill="#fffef8"/>
+<style>text{font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif;fill:#303a2a}.node-letter{fill:#fff}.small{font-size:19px;fill:#8a9380}.label{font-size:25px;font-weight:600}.big{font-size:60px;font-weight:700}</style>
+<text x="65" y="60" class="small" letter-spacing="3">CANVAS SYNAPSE · SYNTHETIC DEMO</text>
+<text x="65" y="110" font-size="34" font-weight="700">Cutsize：跨分区的连接代价</text>
+<rect x="240" y="125" width="330" height="360" rx="22" fill="#edf1e6"/>
+<rect x="610" y="125" width="330" height="360" rx="22" fill="#f9e9db"/>
+<text x="270" y="160" class="small">PARTITION A</text>
+<text x="640" y="160" class="small">PARTITION B</text>
+<line x1="330" y1="235" x2="485" y2="165" stroke="#a3b3bd" stroke-width="3"/>
+<line x1="330" y1="235" x2="465" y2="355" stroke="#a3b3bd" stroke-width="3"/>
+<line x1="485" y1="165" x2="465" y2="355" stroke="#a3b3bd" stroke-width="3"/>
+<line x1="485" y1="165" x2="735" y2="220" stroke="#c7673a" stroke-width="5" stroke-dasharray="10 6"/>
+<text x="610" y="178" class="label" fill="#b25a31">2</text>
+<line x1="465" y1="355" x2="675" y2="425" stroke="#c7673a" stroke-width="5" stroke-dasharray="10 6"/>
+<text x="570" y="376" class="label" fill="#b25a31">3</text>
+<line x1="735" y1="220" x2="830" y2="370" stroke="#a3b3bd" stroke-width="3"/>
+<line x1="830" y1="370" x2="675" y2="425" stroke="#a3b3bd" stroke-width="3"/>
+<circle cx="330" cy="235" r="31" fill="#657952"/>
+<text x="330" y="243" text-anchor="middle" fill="white" class="label node-letter">A</text>
+<circle cx="485" cy="165" r="31" fill="#657952"/>
+<text x="485" y="173" text-anchor="middle" fill="white" class="label node-letter">B</text>
+<circle cx="465" cy="355" r="31" fill="#657952"/>
+<text x="465" y="363" text-anchor="middle" fill="white" class="label node-letter">C</text>
+<circle cx="735" cy="220" r="31" fill="#dc7951"/>
+<text x="735" y="228" text-anchor="middle" fill="white" class="label node-letter">D</text>
+<circle cx="830" cy="370" r="31" fill="#dc7951"/>
+<text x="830" y="378" text-anchor="middle" fill="white" class="label node-letter">E</text>
+<circle cx="675" cy="425" r="31" fill="#dc7951"/>
+<text x="675" y="433" text-anchor="middle" fill="white" class="label node-letter">F</text>
+<text x="960" y="295" class="big" text-anchor="middle">5</text><text x="960" y="330" class="small" text-anchor="middle">CUTSIZE</text>
+<line x1="65" y1="600" x2="1135" y2="600" stroke="#e1e3d7"/>
+<text x="65" y="639" class="small">Minimize connections across the boundary</text>
+<text x="1135" y="639" class="small" text-anchor="end">02 / 06 · 示例课件</text>
+</svg>

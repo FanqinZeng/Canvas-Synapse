@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="KL 与 FM：两种局部改进">
+<rect width="1200" height="675" fill="#fffef8"/>
+<style>text{font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif;fill:#303a2a}.node-letter{fill:#fff}.small{font-size:19px;fill:#8a9380}.label{font-size:25px;font-weight:600}.big{font-size:60px;font-weight:700}</style>
+<text x="65" y="60" class="small" letter-spacing="3">CANVAS SYNAPSE · SYNTHETIC DEMO</text>
+<text x="65" y="110" font-size="34" font-weight="700">KL 与 FM：两种局部改进</text>
+<rect x="150" y="170" width="420" height="310" rx="24" fill="#edf1e6"/>
+<rect x="625" y="170" width="420" height="310" rx="24" fill="#f9e9db"/>
+<text x="190" y="235" class="big">KL</text><text x="665" y="235" class="big">FM</text>
+<text x="190" y="287" class="label">成对交换</text><text x="665" y="287" class="label">单节点移动</text>
+<text x="190" y="350" class="small">Pair exchange</text><text x="665" y="350" class="small">Gain-based moves</text>
+<text x="600" y="530" class="small" text-anchor="middle">评估累计收益，始终核对约束</text>
+<line x1="65" y1="600" x2="1135" y2="600" stroke="#e1e3d7"/>
+<text x="65" y="639" class="small">Exchange pairs. Move one cell.</text>
+<text x="1135" y="639" class="small" text-anchor="end">05 / 06 · 示例课件</text>
+</svg>
