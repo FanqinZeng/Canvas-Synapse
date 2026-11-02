@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "canvas-synapse"
+version = "0.1.0"
+description = "A lightweight local SJTU course workspace: slides, transcripts, knowledge and grounded AI chat."
+requires-python = ">=3.9"
+dependencies = []
+license = {text = "MIT"}
+
+[project.scripts]
+canvas-synapse = "synapse.server:main"
+
+[tool.setuptools.packages.find]
+include = ["synapse*"]
+
+[tool.setuptools.package-data]
+synapse = ["static/*", "static/demo-slides/*"]

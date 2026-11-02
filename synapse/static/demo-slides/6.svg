@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="把方法放回同一个评价框架">
+<rect width="1200" height="675" fill="#fffef8"/>
+<style>text{font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif;fill:#303a2a}.node-letter{fill:#fff}.small{font-size:19px;fill:#8a9380}.label{font-size:25px;font-weight:600}.big{font-size:60px;font-weight:700}</style>
+<text x="65" y="60" class="small" letter-spacing="3">CANVAS SYNAPSE · SYNTHETIC DEMO</text>
+<text x="65" y="110" font-size="34" font-weight="700">把方法放回同一个评价框架</text>
+<rect x="120" y="220" width="235" height="220" rx="24" fill="#edf1e6"/>
+<text x="150" y="295" class="big">01</text>
+<text x="150" y="355" class="label">建模</text>
+<rect x="390" y="220" width="235" height="220" rx="24" fill="#f9e9db"/>
+<text x="420" y="295" class="big">02</text>
+<text x="420" y="355" class="label">初始划分</text>
+<rect x="660" y="220" width="235" height="220" rx="24" fill="#edf1e6"/>
+<text x="690" y="295" class="big">03</text>
+<text x="690" y="355" class="label">局部改进</text>
+<rect x="930" y="220" width="235" height="220" rx="24" fill="#f9e9db"/>
+<text x="960" y="295" class="big">04</text>
+<text x="960" y="355" class="label">验证</text>
+<line x1="65" y1="600" x2="1135" y2="600" stroke="#e1e3d7"/>
+<text x="65" y="639" class="small">Model → Initialize → Refine → Verify</text>
+<text x="1135" y="639" class="small" text-anchor="end">06 / 06 · 示例课件</text>
+</svg>

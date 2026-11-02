@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>导出课堂材料</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header><span class="mark">S</span><div><strong>Canvas Synapse</strong><small>带走课堂材料，轻装学习</small></div></header>
+  <p>在已登录的交大「课堂实录」播放页选择一节，导出讲稿、slides 地址和时间索引。</p>
+  <button id="load" class="secondary">读取当前页面的节次</button>
+  <label for="lecture">选择回放</label>
+  <select id="lecture" disabled><option>请先读取页面</option></select>
+  <label for="course">课程名称</label>
+  <input id="course" maxlength="160" placeholder="读取后可修改名称">
+  <button id="export" disabled>导出 JSON 材料包</button>
+  <div id="status" role="status" aria-live="polite">只读取你当前有权访问的材料。凭据不会写入导出文件。</div>
+  <footer>视频不会下载。导出后回到本地应用 → 导入课程 → JSON 材料包。此适配器依赖学校页面版本。</footer>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

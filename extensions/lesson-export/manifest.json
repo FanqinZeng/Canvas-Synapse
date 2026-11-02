@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Canvas Synapse · 课堂材料导出",
+  "version": "0.1.0",
+  "description": "从当前已登录的交大回放页导出字幕和 slides 索引；不下载视频，不导出账号凭据。",
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_title": "导出到 Canvas Synapse",
+    "default_popup": "popup.html"
+  }
+}
