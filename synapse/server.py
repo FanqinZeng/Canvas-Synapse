@@ -147,6 +147,12 @@ class Application:
         lecture = self.store.get_lecture(lecture_id)
         if not lecture:
             raise ValueError("未找到课程回放")
+        if config.get("send_images") and any(
+            slide.get("image_url") and not slide["image_url"].startswith("/demo-slides/")
+            for slide in lecture["slides"]
+        ):
+            llm.check_image_input(config)
+
         def run(update):
             summaries = []
             slides = lecture["slides"]

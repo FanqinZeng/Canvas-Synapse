@@ -109,6 +109,22 @@ class HTTPTests(unittest.TestCase):
         current = self.server.application.store.get_lecture(lecture["id"])
         self.assertTrue(all(s["knowledge"][0]["title"] == "测试概念" for s in current["slides"]))
 
+    def test_analysis_rejects_images_for_text_only_glm_before_starting_job(self):
+        bundle = {
+            "course": {"id": "vision-check", "title": "测试课程"},
+            "lecture": {"id": "vision-check", "title": "测试课", "duration": 60},
+            "slides": [{"start": 0, "image_url": "https://example.com/slide.jpg", "ocr": "测试课件"}],
+        }
+        status, raw = self.req("POST", "/api/import", bundle)
+        self.assertEqual(status, 200, raw)
+        self.req("PUT", "/api/settings", {"model": "glm-5.3", "api_key": "fake-test-secret", "send_images": True})
+        with patch("synapse.server.Application.start_job") as start_job:
+            status, raw = self.req("POST", "/api/analyze", {"lecture_id": "vision-check"})
+            self.assertEqual(status, 400, raw)
+            self.assertIn("glm-5.3 只支持文本", raw.decode())
+            start_job.assert_not_called()
+        self.req("PUT", "/api/settings", {"send_images": False})
+
 
 if __name__ == "__main__":
     unittest.main()
