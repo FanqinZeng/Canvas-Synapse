@@ -109,6 +109,26 @@ class HTTPTests(unittest.TestCase):
         current = self.server.application.store.get_lecture(lecture["id"])
         self.assertTrue(all(s["knowledge"][0]["title"] == "测试概念" for s in current["slides"]))
 
+    def test_analysis_format_failure_retains_original_and_previous_points(self):
+        lecture = self.demo()
+        self.req("PUT", "/api/settings", {"api_key": "fake-test-secret", "model": "fake-test-model"})
+        with patch("synapse.llm.complete", return_value="格式错误的回答") as complete:
+            status, raw = self.req("POST", "/api/analyze", {"lecture_id": lecture["id"]})
+            self.assertEqual(status, 200, raw)
+            job_id = json.loads(raw)["job_id"]
+            for _ in range(200):
+                job = json.loads(self.req("GET", "/api/jobs/" + job_id)[1])
+                if job["status"] != "running":
+                    break
+                time.sleep(0.01)
+        self.assertEqual(job["status"], "failed", job)
+        self.assertIn("第 1 页、第 1 段", job["error"])
+        self.assertIn("连续两次", job["error"])
+        self.assertEqual(complete.call_count, 2)
+        current = self.server.application.store.get_lecture(lecture["id"])
+        self.assertEqual(current["transcript"], lecture["transcript"])
+        self.assertEqual(current["slides"][0]["knowledge"], lecture["slides"][0]["knowledge"])
+
     def test_analysis_rejects_images_for_text_only_glm_before_starting_job(self):
         bundle = {
             "course": {"id": "vision-check", "title": "测试课程"},

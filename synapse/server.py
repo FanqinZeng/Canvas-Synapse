@@ -187,15 +187,12 @@ class Application:
                                 raise ValueError("第 %s 页图片超过视觉分析上限 3MB，可关闭图片分析后重试" % (i + 1))
                             data_url = "data:%s;base64,%s" % (mime, base64.b64encode(image).decode())
                             content = [{"type": "text", "text": prompt}, {"type": "image_url", "image_url": {"url": data_url}}]
-                    parsed = llm.extract_json(llm.complete(config, [{"role": "user", "content": content}]))
-                    if not isinstance(parsed, dict) or not isinstance(parsed.get("knowledge"), list):
-                        raise ValueError("模型返回的知识点格式无效，可重试")
-                    for item in parsed["knowledge"]:
-                        if not isinstance(item, dict) or not isinstance(item.get("title"), str) or not isinstance(item.get("detail"), str):
-                            raise ValueError("模型返回的知识点字段无效，可重试")
-                        knowledge.append({"title": item["title"], "detail": item["detail"]})
-                    if isinstance(parsed.get("summary"), str):
-                        page_summaries.append(parsed["summary"])
+                    try:
+                        parsed = llm.generate_knowledge(config, content)
+                    except ValueError as error:
+                        raise ValueError("第 %s 页、第 %s 段整理失败：%s" % (i + 1, part + 1, error)) from None
+                    knowledge.extend(parsed["knowledge"])
+                    page_summaries.append(parsed["summary"])
                 self.store.update_analysis(lecture_id, slide["id"], knowledge, "\n\n".join(page_summaries),
                                            expected_material_hash=lecture["material_hash"])
                 summaries.append("### %s\n%s" % (slide["title"], "\n\n".join(page_summaries)))
