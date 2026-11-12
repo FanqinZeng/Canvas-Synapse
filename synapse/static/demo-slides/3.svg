@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="平衡的是面积，不只是数量">
+<rect width="1200" height="675" fill="#fffef8"/>
+<style>text{font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif;fill:#303a2a}.node-letter{fill:#fff}.small{font-size:19px;fill:#8a9380}.label{font-size:25px;font-weight:600}.big{font-size:60px;font-weight:700}</style>
+<text x="65" y="60" class="small" letter-spacing="3">CANVAS SYNAPSE · SYNTHETIC DEMO</text>
+<text x="65" y="110" font-size="34" font-weight="700">平衡的是面积，不只是数量</text>
+<rect x="225" y="190" width="350" height="245" rx="24" fill="#edf1e6"/>
+<rect x="625" y="190" width="350" height="245" rx="24" fill="#f9e9db"/>
+<text x="400" y="280" class="big" text-anchor="middle">12</text>
+<text x="800" y="280" class="big" text-anchor="middle">8</text>
+<text x="400" y="325" class="small" text-anchor="middle">AREA OF A</text>
+<text x="800" y="325" class="small" text-anchor="middle">AREA OF B</text>
+<text x="600" y="500" class="label" text-anchor="middle">|12 − 8| / (12 + 8) = 0.20</text>
+<line x1="65" y1="600" x2="1135" y2="600" stroke="#e1e3d7"/>
+<text x="65" y="639" class="small">COUNT IS NOT AREA</text>
+<text x="1135" y="639" class="small" text-anchor="end">03 / 06 · 示例课件</text>
+</svg>
